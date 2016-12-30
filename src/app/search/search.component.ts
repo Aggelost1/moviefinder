@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'about',
+  selector: 'search',
   styles: [`
   `],
   template: `
@@ -19,7 +19,7 @@ import { ActivatedRoute } from '@angular/router';
     <pre>this.localState = {{ localState | json }}</pre>
   `
 })
-export class AboutComponent {
+export class SearchComponent {
   localState: any;
   constructor(public route: ActivatedRoute) {
 
@@ -33,7 +33,7 @@ export class AboutComponent {
         this.localState = data.yourData;
       });
 
-    console.log('hello `About` component');
+    console.log('hello `Search` component');
     // static data that is bundled
     // var mockData = require('assets/mock-data/mock-data.json');
     // console.log('mockData', mockData);
