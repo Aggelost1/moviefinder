@@ -5,27 +5,17 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'search',
   styles: [`
   `],
-  template: `
-    <h1>About</h1>
-    <div>
-      For hot module reloading run
-      <pre>npm run start:hmr</pre>
-    </div>
-    <div>
-      <h3>
-        patrick@AngularClass.com
-      </h3>
-    </div>
-    <pre>this.localState = {{ localState | json }}</pre>
-  `
+  templateUrl: 'search.html'
 })
 export class SearchComponent {
   localState: any;
-  constructor(public route: ActivatedRoute) {
+  value: string;
 
+  constructor(public route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.value = '';
     this.route
       .data
       .subscribe((data: any) => {
@@ -40,6 +30,11 @@ export class SearchComponent {
     // if you're working with mock data you can also use http.get('assets/mock-data/mock-data.json')
     this.asyncDataWithWebpack();
   }
+
+  onEnter = (value: string) => {
+    this.value = value;
+  }
+
   asyncDataWithWebpack() {
     // you can also async load mock data with 'es6-promise-loader'
     // you would do this if you don't want the mock-data bundled
