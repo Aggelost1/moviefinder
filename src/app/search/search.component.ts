@@ -10,16 +10,21 @@ import { ActivatedRoute } from '@angular/router';
 export class SearchComponent {
   localState: any;
   value: string;
-
+  apiKey: string;
+  searchUrl: string;
+  movieQuery: string;
   constructor(public route: ActivatedRoute) {
   }
 
   ngOnInit() {
+      this.apiKey = "0af0cd62a4131f05e9e97a450fbee87f";
+      this.movieQuery = "query=avengers"
+      this.searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&language=en-US&page=1&include_adult=false&`
     this.value = '';
     this.route
       .data
       .subscribe((data: any) => {
-        // your resolved data from route
+        // your resolved data from rarch hereoute
         this.localState = data.yourData;
       });
 
@@ -30,9 +35,14 @@ export class SearchComponent {
     // if you're working with mock data you can also use http.get('assets/mock-data/mock-data.json')
     this.asyncDataWithWebpack();
   }
-
+  movieSearch = (value: string) => {
+      this.movieQuery = `query=${value}`;
+      console.log(this.searchUrl+this.movieQuery);
+      
+    }
   onEnter = (value: string) => {
-    this.value = value;
+      this.value = value;
+      this.movieSearch(value);
   }
 
   asyncDataWithWebpack() {
