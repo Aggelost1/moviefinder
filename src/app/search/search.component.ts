@@ -1,29 +1,30 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Http, Response } from '@angular/http';
-import { Observable }     from 'rxjs/Observable';
+import { SearchService } from './search.service';
 
 @Component({
   selector: 'search',
   styles: [`
   `],
-  templateUrl: 'search.html'
+  templateUrl: 'search.html',
+  providers:[SearchService]
 })
 export class SearchComponent {
   localState: any;
   value: string;
-  apiKey: string;
-  searchUrl: string;
-  movieQuery: string;
-  moviesList: Array<Object>;
-  constructor(public route: ActivatedRoute, private http: Http) {
+  // apiKey: string;
+  // searchUrl: string;
+  // movieQuery: string;
+  // moviesList: Array<Object>;
+  constructor(public route: ActivatedRoute, public searchService: SearchService) {
   }
 
   ngOnInit() {
-    this.apiKey = '0af0cd62a4131f05e9e97a450fbee87f';
-    this.movieQuery = 'query=avengers';
-    this.searchUrl =`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&language=en-US&page=1&include_adult=false&`;
-    this.value = '';
+    this.value = ' 0 ';
+    // this.apiKey = '0af0cd62a4131f05e9e97a450fbee87f';
+    // this.movieQuery = 'query=avengers';
+    // this.searchUrl =`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&language=en-US&page=1&include_adult=false&`;
+    // this.value = '';
     this.route
       .data
       .subscribe((data: any) => {
@@ -41,30 +42,7 @@ export class SearchComponent {
 
   public onEnter = (value: string) => {
       this.value = value;
-      this.searchMovie(value);
-  }
-
-  private extractMovieData(res: Response) {
-    let body = res.json();
-    console.log(body);
-    // return body.results || {};
-    return 'lalakis';
-  }
-
-  private searchMovie(value: string) {
-    this.movieSearch(value)
-      .subscribe(this.handleMovieData)
-  }
-
-  private handleMovieData(res: Array<Object>) {
-    console.log(res);
-    this.moviesList = res;
-  }
-
-  private movieSearch(value: string): Observable<any>{
-    this.movieQuery = `query=${value}`;
-    return this.http.get(this.searchUrl + this.movieQuery)
-      .map(this.extractMovieData);
+      this.searchService.searchMovie(value);
   }
 
   // asyncDataWithWebpack() {

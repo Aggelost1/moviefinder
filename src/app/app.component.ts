@@ -46,7 +46,7 @@ import { AppState } from './app.service';
       <router-outlet></router-outlet>
     </main>
 
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+    <br>
 
     <footer>
       <span>Th3 B3st <a [href]="url">M0V!3 F!ND£R</a></span>
