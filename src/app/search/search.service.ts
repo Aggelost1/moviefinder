@@ -27,7 +27,7 @@ export class SearchService {
 
     private extractMovieData(res: Response) {
       let body = res.json();
-      return body.results || {};
+      return body.results || [];
     }
 
 }
