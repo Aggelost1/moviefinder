@@ -19,18 +19,15 @@ export class SearchService {
       this.value = '';
     };
 
-   
-
-    private extractMovieData(res: Response) {
-      let body = res.json();
-      return body || {};
-    }
-
-    
-
     public movieSearch(value: string): Observable<any>{
       this.movieQuery = `query=${value}`;
       return this.http.get(this.searchUrl + this.movieQuery)
         .map(this.extractMovieData);
     }
+
+    private extractMovieData(res: Response) {
+      let body = res.json();
+      return body.results || {};
+    }
+
 }

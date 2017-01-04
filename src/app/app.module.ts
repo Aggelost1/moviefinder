@@ -18,7 +18,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { SearchComponent } from './search';
-import { MovieInit } from './search/item.component';
+import { Movie } from './search/item.component';
 import { NoContentComponent } from './no-content';
 import { XLarge } from './home/x-large';
 
@@ -42,8 +42,8 @@ type StoreType = {
   declarations: [
     AppComponent,
     SearchComponent,
-      HomeComponent,
-      MovieInit,
+    HomeComponent,
+    Movie,
     NoContentComponent,
     XLarge
   ],
