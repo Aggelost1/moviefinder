@@ -11,7 +11,6 @@ export class SearchService {
     searchUrlp1: string;
     searchUrl: string;
     movieQuery: string;
-    moviesList: Array<Object>;
     constructor(private http: Http) {
       this.apiKey = '0af0cd62a4131f05e9e97a450fbee87f';
       this.movieQuery = 'query=';
@@ -20,22 +19,16 @@ export class SearchService {
       this.value = '';
     };
 
-    public searchMovie(value: string) {
-      this.movieSearch(value)
-        .subscribe(this.handleMovieData);
-    }
+   
 
     private extractMovieData(res: Response) {
       let body = res.json();
       return body || {};
     }
 
-    private handleMovieData(res: Array<Object>) {
-      console.log(res);
-      this.moviesList = res;
-    }
+    
 
-    private movieSearch(value: string): Observable<any>{
+    public movieSearch(value: string): Observable<any>{
       this.movieQuery = `query=${value}`;
       return this.http.get(this.searchUrl + this.movieQuery)
         .map(this.extractMovieData);

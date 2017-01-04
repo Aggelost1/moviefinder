@@ -1,31 +1,29 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from './search.service';
+import {MovieInit} from './item.component';
 
 @Component({
   selector: 'search',
   styles: [`
   `],
-  templateUrl: 'search.html',
-  providers:[SearchService]
+  providers: [SearchService, MovieInit],
+  templateUrl: 'search.html'
+  
 })
 export class SearchComponent {
   localState: any;
   value: string;
-  // apiKey: string;
-  // searchUrl: string;
-  // movieQuery: string;
-  // moviesList: Array<Object>;
-  constructor(public route: ActivatedRoute, public searchService: SearchService) {
+  moviesdata: any;
+  moviesList: any;
+  constructor(public route: ActivatedRoute, public searchService: SearchService, public movieInit: MovieInit ) {
   }
 
   ngOnInit() {
-    this.value = ' 0 ';
-    // this.apiKey = '0af0cd62a4131f05e9e97a450fbee87f';
-    // this.movieQuery = 'query=avengers';
-    // this.searchUrl =`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&language=en-US&page=1&include_adult=false&`;
-    // this.value = '';
-    this.route
+      this.value = ' 0 ';
+      this.moviesdata = JSON.stringify( {page: 0 , results: 2, total_results: 0, total_pages: 0});
+
+      this.route
       .data
       .subscribe((data: any) => {
         // your resolved data from rarch hereoute
@@ -33,16 +31,28 @@ export class SearchComponent {
       });
 
     console.log('hello `Search` component');
-    // static data that is bundled
-    // var mockData = require('assets/mock-data/mock-data.json');
-    // console.log('mockData', mockData);
-    // if you're working with mock data you can also use http.get('assets/mock-data/mock-data.json')
-    // this.asyncDataWithWebpack();
   }
 
   public onEnter = (value: string) => {
+      this.moviesdata = 14;
       this.value = value;
-      this.searchService.searchMovie(value);
+      this.searchMovie(value);
+  }
+  public searchMovie(value: string) {
+      this.moviesdata = 15
+      this.searchService.movieSearch(value)
+          .subscribe((res) => { this.handleMovieData(res); });
+  }
+  public handleMovieData(res: Object) {
+      console.log(res);
+      
+      this.moviesdata = res;
+      console.log(this.moviesdata);
+      console.log(12);
+ 
+      this.moviesList = this.moviesdata.results[1].original_title;
+      console.log(this.moviesList);
+      return;
   }
 
   // asyncDataWithWebpack() {

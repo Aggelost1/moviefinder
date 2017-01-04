@@ -1,5 +1,5 @@
 <h1>Search</h1>
 <input #searchBox type='text' value="avengers" (keyup.enter)="onEnter(searchBox.value)" >
-<h2>{{this.value}}</h2>
-
+<h4>Search results for:{{this.value}}</h4>
+<p><movieItem  [movie]="this.moviesList"></movieItem></p>
 
