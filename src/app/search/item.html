@@ -1,2 +1,9 @@
-<h4>Release date: {{this.movie.release_date}}, language:{{this.movie.original_language}}</h4>
-<h6>Score:{{this.movie.vote_average}} with {{this.movie.vote_count}} votes </h6>
+<md-card style="width: 350px;">
+    <md-grid-list cols='3' rowHeight='62px'>
+    <md-grid-tile [colspan]= '1' [rowspan]='3' ><img src='{{imagePath}}{{movie.poster_path}}'></md-grid-tile>
+    <md-grid-tile [colspan]= '2' [rowspan]='1' >{{movie.title}}</md-grid-tile>
+    <md-grid-tile [colspan]= '2' [rowspan]='1' >{{movie.release_date}}</md-grid-tile>
+    <md-grid-tile [colspan]= '2' [rowspan]='1' >{{movie.vote_average}}</md-grid-tile>
+    </md-grid-list>
+</md-card>
+

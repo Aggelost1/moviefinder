@@ -19,6 +19,12 @@ export class SearchComponent {
   }
 
   ngOnInit() {
+    // this.movieData = {
+    //   vote_average: 5,
+    //   vote_count: 9,
+    //   release_date: 'today',
+    //   original_language: 'en'
+    // };
     // this.movies = [];
     this.value = '';
     console.log('hello `Search` component');
