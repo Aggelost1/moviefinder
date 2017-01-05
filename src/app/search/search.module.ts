@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
-import { SearchService } from './search.service';
-import { Movie } from './item.component';
+import { CommonModule } from '@angular/common';
+
+import { MaterialModule } from '@angular/material/bundles/material.umd.js';
 import { SearchComponent } from './search.component';
+import { searchRouting } from './search.routing';
+import { SearchService } from './search.service';
+import { SharedModule }   from '../shared/shared.module';
 
-
-
-@NgModule({}) 
-export class SearchModule {
-    static forRoot() {
-        return {
-            NgModule: SearchModule,
-            providers: [SearchService, Movie, SearchComponent]
-        }
-    }
-   
-
-}
-export {SearchService, Movie, SearchComponent}
+@NgModule({
+  imports: [
+    CommonModule,
+    MaterialModule.forRoot(),
+    searchRouting.routes,
+    SharedModule
+  ],
+  declarations: [
+    searchRouting.components
+  ],
+  providers: [ SearchService ]
+})
+export class SearchModule { }

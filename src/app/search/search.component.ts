@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SearchService, Movie } from './search.module';
+
+import { SearchService } from './search.service';
+import { Movie } from './item.component';
+
 @Component({
   selector: 'search',
   styles: [`
@@ -17,15 +20,7 @@ export class SearchComponent {
   }
 
   ngOnInit() {
-    // this.movieData = {
-    //   vote_average: 5,
-    //   vote_count: 9,
-    //   release_date: 'today',
-    //   original_language: 'en'
-    // };
-    // this.movies = [];
     this.value = '';
-    console.log('hello `Search` component');
   }
 
   public onEnter = (value: string) => {
@@ -37,7 +32,7 @@ export class SearchComponent {
       .subscribe( res => this.handleMovieData(res) );
   }
   public handleMovieData(res: Object) {
-    this.movies = res.results;
+    this.movies = res;
     console.log(this.movies, 'this.movies');
   }
 }

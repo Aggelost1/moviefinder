@@ -3,7 +3,6 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
-
 @Injectable()
 export class SearchService {
     value: string;
@@ -27,7 +26,7 @@ export class SearchService {
 
     private extractMovieData(res: Response) {
       let body = res.json();
-      return body || [];
+      return body.results || [];
     }
 
 }

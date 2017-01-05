@@ -6,9 +6,14 @@ import { DataResolver } from './app.resolver';
 
 
 export const ROUTES: Routes = [
+  {
+    path: 'search',
+    pathMatch: 'prefix',
+    loadChildren: './search/search.module#SearchModule'
+  },
+
   { path: '',      component: HomeComponent },
   { path: 'home',  component: HomeComponent },
   { path: 'detail', loadChildren: './+detail/index#DetailModule' },
-  { path: 'search', component: SearchComponent },
   { path: '**',    component: NoContentComponent },
 ];
