@@ -19,9 +19,10 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
 import { SearchComponent } from './search';
+//import { SearchModule} from './search/search.module';
 import { Movie } from './search/item.component';
+import { HomeComponent } from './home';
 import { NoContentComponent } from './no-content';
 import { XLarge } from './home/x-large';
 
@@ -57,6 +58,8 @@ type StoreType = {
     // MdCardModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     MaterialModule.forRoot(),
+    //my modules
+   // SearchModule.forRoot(),
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SearchService } from './search.service';
-import { Movie } from './item.component';
-
+import { SearchService, Movie } from './search.module';
 @Component({
   selector: 'search',
   styles: [`
@@ -39,7 +37,7 @@ export class SearchComponent {
       .subscribe( res => this.handleMovieData(res) );
   }
   public handleMovieData(res: Object) {
-    this.movies = res;
+    this.movies = res.results;
     console.log(this.movies, 'this.movies');
   }
 }
