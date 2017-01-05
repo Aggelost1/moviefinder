@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
     templateUrl: 'item.html',
 })
 export class Movie {
+<<<<<<< Updated upstream
     @Input() movie = { poster_path: " ", title: " " };
     public  imagePath = 'http://image.tmdb.org/t/p/w185/';
     ngOnInit() {
@@ -15,3 +16,7 @@ export class Movie {
             }
         }
     }
+=======
+    @Input() movie: {title:"adc"};
+}
+>>>>>>> Stashed changes

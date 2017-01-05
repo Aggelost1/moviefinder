@@ -12,11 +12,13 @@ export class SearchComponent {
   localState: any;
   value: string;
   movies: any;
+  searchData: any;
   constructor(public route: ActivatedRoute,
     public searchService: SearchService) {
   }
 
   ngOnInit() {
+<<<<<<< Updated upstream
     // this.movieData = {
     //   vote_average: 5,
     //   vote_count: 9,
@@ -24,6 +26,8 @@ export class SearchComponent {
     //   original_language: 'en'
     // };
     // this.movies = [];
+=======
+>>>>>>> Stashed changes
     this.value = '';
     console.log('hello `Search` component');
   }
@@ -37,7 +41,13 @@ export class SearchComponent {
       .subscribe( res => this.handleMovieData(res) );
   }
   public handleMovieData(res: Object) {
+<<<<<<< Updated upstream
     this.movies = res.results;
     console.log(this.movies, 'this.movies');
+=======
+      this.searchData = res;
+      this.movies = res.results;
+      console.log(this.movies, 'this.movies', this.searchData);
+>>>>>>> Stashed changes
   }
 }
