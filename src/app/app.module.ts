@@ -6,7 +6,6 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 /* Import material design module */
 import { MaterialModule } from '@angular/material/bundles/material.umd.js';
-// import { MdCardModule } from '@angular/material/card';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -19,9 +18,6 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { SearchComponent } from './search';
-//import { SearchModule} from './search/search.module';
-import { Movie } from './search/item.component';
 import { HomeComponent } from './home';
 import { NoContentComponent } from './no-content';
 import { XLarge } from './home/x-large';
@@ -45,9 +41,7 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    SearchComponent,
     HomeComponent,
-    Movie,
     NoContentComponent,
     XLarge
   ],
@@ -55,11 +49,8 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    // MdCardModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     MaterialModule.forRoot(),
-    //my modules
-   // SearchModule.forRoot(),
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

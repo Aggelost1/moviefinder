@@ -5,14 +5,10 @@
   </md-input-container>
 
 <h4>Search results for:{{value}}</h4>
-<<<<<<< Updated upstream
+
 <ul style="list-style-type: none;">
     <li style="display: inline-block;" *ngFor="let movie of movies; let i = index;">
         <movieItem  [movie]="movie"></movieItem>
-=======
-<ul>
-    <li *ngFor="let movie of movies; let i=index; ">
-        <movieItem [movie]="movie"></movieItem>
->>>>>>> Stashed changes
     </li>
-</ul>
+ </ul>
+<router-outlet></router-outlet>
