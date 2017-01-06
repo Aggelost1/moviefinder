@@ -1,0 +1,12 @@
+<h1>Search</h1>
+
+ <md-input-container class="example-full-width">
+    <input md-input #searchBox type='text' value='avengers' (keyup.enter)='onEnter(searchBox.value)'>
+  </md-input-container>
+
+<h4>Search results for:{{value}}</h4>
+<ul style="list-style-type: none;">
+    <li style="display: inline-block;" *ngFor="let movie of movies; let i = index;">
+        <movieItem  [movie]="movie"></movieItem>
+    </li>
+</ul>

@@ -1,15 +1,19 @@
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home';
-import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
-
+import { SearchComponent } from './search';
 import { DataResolver } from './app.resolver';
 
 
 export const ROUTES: Routes = [
+  {
+    path: 'search',
+    pathMatch: 'prefix',
+    loadChildren: './search/search.module#SearchModule'
+  },
+
   { path: '',      component: HomeComponent },
   { path: 'home',  component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'detail', loadChildren: './+detail/index#DetailModule'},
+  { path: 'detail', loadChildren: './+detail/index#DetailModule' },
   { path: '**',    component: NoContentComponent },
 ];
