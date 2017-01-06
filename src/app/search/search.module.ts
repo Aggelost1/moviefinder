@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 //import material design module
 import { MaterialModule } from '@angular/material/bundles/material.umd.js';
-//import my components
+//import my 
 import { SearchComponent } from './search.component';
 import { Movie } from './item.component';
 import { SearchService } from './search.service';

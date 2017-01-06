@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService} from './search.service';
+import {FindReturnedData } from './search.data.classes';
 import {  Movie } from './item.component';
 
 @Component({
   selector: 'search',
   styles: [`
   `],
-  providers: [SearchService, Movie],
+  providers: [SearchService, Movie, FindReturnedData],
   templateUrl: 'search.html'
 })
 export class SearchComponent {
   localState: any;
   value: string;
   movies: any;
-  searchData: any;
+  searchData: FindReturnedData;
   constructor(public route: ActivatedRoute,
     public searchService: SearchService) {
   }
@@ -32,11 +33,10 @@ export class SearchComponent {
     this.searchService.movieSearch(value)
       .subscribe( res => this.handleMovieData(res) );
   }
-  public handleMovieData(res: Object) {
-    console.log(this.movies, 'this.movies');
+  public handleMovieData(res: FindReturnedData) {
       this.searchData = res;
       this.movies = res.results;
-      console.log(this.movies, 'this.movies', this.searchData);
+      console.log('this.movies', this.movies, 'this.searchData', this.searchData);
 
   }
 }

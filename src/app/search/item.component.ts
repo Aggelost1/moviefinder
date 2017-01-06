@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import {MovieData } from './search.data.classes';
 
 @Component({
     selector: 'movieItem',
@@ -8,12 +9,13 @@ import { Component, Input } from '@angular/core';
 })
 export class Movie {
 
-    @Input() movie = { poster_path: " ", title: " " };
+    @Input() movie: MovieData;
+   
     public  imagePath = 'http://image.tmdb.org/t/p/w185/';
     ngOnInit() {
         if (this.movie.poster_path == null ) {
             this.imagePath = 'assets/img/noImage.jpg';
-            }
+           }
         }
     }
 
