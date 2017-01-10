@@ -36,8 +36,8 @@ import { AppState } from './app.service';
       </span>
       |
       <span>
-        <a [routerLink]=" ['./search'] ">
-          Search
+        <a [routerLink]=" ['./movies'] ">
+          movies
         </a>
       </span>
     </nav>
