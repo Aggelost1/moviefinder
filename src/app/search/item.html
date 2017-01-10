@@ -1,7 +1,7 @@
 
 <md-card style="width: 350px;">
     <md-grid-list cols='3' rowHeight='62px'>
-    <md-grid-tile [colspan]= '1' [rowspan]='3' ><img src='{{imagePath}}{{movie.poster_path}}'></md-grid-tile>
+   <md-grid-tile [colspan]= '1' [rowspan]='3' ><imag [urls]="url" ></imag></md-grid-tile>
     <md-grid-tile [colspan]= '2' [rowspan]='1' >{{movie.title}}</md-grid-tile>
     <md-grid-tile [colspan]= '2' [rowspan]='1' >Release date: {{movie.release_date}}</md-grid-tile>
     <md-grid-tile [colspan]= '2' [rowspan]='1' >Rating: {{movie.vote_average}} <br /> of {{movie.vote_count}} votes</md-grid-tile>

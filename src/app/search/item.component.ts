@@ -1,24 +1,21 @@
 import { Component, Input } from '@angular/core';
-import {MovieData } from './search.data.classes';
+import {FindMovieData, UrlList } from '../models/find.models';
+import { Poster } from '../common/image.or.not.component'
 
 @Component({
     selector: 'movieItem',
     styles: [`
   `],
-    templateUrl: 'item.html',
+    templateUrl: 'item.html', 
+     providers: [Poster],
 })
 export class Movie {
-
-    @Input() movie: MovieData;
    
+    @Input() movie: FindMovieData;
+    url : UrlList = new UrlList();
     public  imagePath = 'http://image.tmdb.org/t/p/w185/';
     ngOnInit() {
-        if (this.movie.poster_path == null ) {
-            this.imagePath = 'assets/img/noImage.jpg';
-           }
+      this.url.first=this.imagePath;
+        this.url.second=this.movie.poster_path;   
         }
     }
-
-
-
-

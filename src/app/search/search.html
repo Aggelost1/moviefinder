@@ -7,8 +7,19 @@
 <h4>Search results for:{{value}}</h4>
 
 <ul style="list-style-type: none;">
-    <li style="display: inline-block;" *ngFor="let movie of movies; let i = index;">
+    <li style="display: inline-block;" *ngFor="let movie of movies; let k = index;">
         <movieItem  [movie]="movie"></movieItem>
     </li>
  </ul>
+ 
+ 
+<ul *ngIf="morePages&&searched" style="list-style-type: none;">
+    <li style="display: inline-block;" *ngFor="let pageNum of  this.pagesArray; let k = index;">
+        <numNav [num]="pageNum" (click)='searchChange(pageNum)' ></numNav>
+    </li>
+ </ul>
+
+
+
+
 <router-outlet></router-outlet>

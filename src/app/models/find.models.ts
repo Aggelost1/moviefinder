@@ -5,7 +5,7 @@ export class FindReturnedData {
     total_pages: number;
 }
 
-export class MovieData {
+export class FindMovieData {
     adult: boolean;
     backdrop_path: string;
     genre_ids: Array<any>;
@@ -19,4 +19,11 @@ export class MovieData {
     vote_count: number;
     poster_path: string;
     title: string;
-};
+}
+
+
+export class UrlList { 
+    first: string;
+    second: string;
+    
+}
