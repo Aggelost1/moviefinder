@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-import {FindMovieData, UrlList } from '../models/find.models';
+import {FindMovieData, UrlList } from '../common/models/find.models';
 import { Poster } from '../common/image.or.not.component'
 
 @Component({
     selector: 'movieItem',
     styles: [`
   `],
-    templateUrl: 'item.html', 
+    templateUrl: 'movie.card.html', 
      providers: [Poster],
 })
 export class Movie {

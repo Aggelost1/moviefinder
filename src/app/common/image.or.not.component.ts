@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {UrlList} from '../models/find.models';
+import {UrlList} from './models/find.models';
 //this component takes an input of an array with two strings first should be standart path
 // and the second should be the extention for the specific image you want to display (if it is null) it returns a cashed "no-image image 
 
@@ -7,7 +7,7 @@ import {UrlList} from '../models/find.models';
     selector: 'imag',
     styles: [`
   `],
-    template: "<img src='{{urlP1}}{{urlP2}}'>",
+    template: '<img src="{{urlP1}}{{urlP2}}" (error)="updateUrl($event)">',
    
 })
 export class Poster {
@@ -24,4 +24,7 @@ export class Poster {
            }
            
         }
+    public   updateUrl($event) {
+     this.urlP1 = 'assets/img/noImageCurrently.jpg';
+    }
 }

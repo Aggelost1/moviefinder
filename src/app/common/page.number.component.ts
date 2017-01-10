@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
     selector: 'numNav',
     styles: [`
   `],
-    templateUrl: 'page.number.html',
+    template: '<p>{{num}}&ensp;</p>',
 })
 export class PageNum {
 

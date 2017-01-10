@@ -4,15 +4,15 @@ import {NgIf} from 'angular2/common';
 import { ActivatedRoute } from '@angular/router';
 //my imports
 import { PageNum } from '../common/page.number.component';
-import {FindReturnedData } from '../models/find.models';
+import {FindReturnedData } from '..//common/models/find.models';
 import { SearchService} from './search.service';
-import {  Movie } from './item.component';
+import {  Movie } from './movie.card.component';
 
 @Component({
   selector: 'search',
   styles: [`
   `],
-  providers: [SearchService, Movie, FindReturnedData, PageNum,],
+  providers: [SearchService, Movie, PageNum,],
   templateUrl: 'search.html'
 })
 export class SearchComponent {
@@ -59,14 +59,14 @@ export class SearchComponent {
   }
 // give the option of changing page if there are more than 20 results
 public CreatePageLinks(total:number,current:number) {
-  console.log(total)
+  
   this.pagesArray=[1];
   if(total>1){
     this.morePages=true;
    for(var i=2;i<total+1;i++) {
       this.pagesArray.push(i);
     }
-    console.log( this.pagesArray) ;
+    
   }
   else if (total<2) {this.morePages=false;}
 }

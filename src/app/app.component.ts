@@ -49,19 +49,22 @@ import { AppState } from './app.service';
     <br>
 
     <footer>
-      <span>Th3 B3st <a [href]="url">M0V!3 F!ND£R</a></span>
+      <span>The Best <a [href]="url">M0V!3 F!ND£R</a></span>
       <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
+        <a [href]="url2">
+        <p>Sourced by: </p>
+          <img [src]="apiLogo" width="10%">
         </a>
       </div>
     </footer>
   `
 })
 export class AppComponent {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
+  apiLogo = 'assets/img/apiSourceLogo.png';
   name = 'Angular 2 Webpack Starter';
   url = 'https://github.com/Aggelost1/moviefinder';
+  url2 = 'https://www.themoviedb.org/';
+
 
   constructor(
     public appState: AppState) {
