@@ -4,26 +4,23 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class SearchService {
-    pageNum: number;
-    value: string;
+export class FetchService {
     apiKey: string;
-    searchUrlp1: string;
-     searchUrlp2: string;
+    searchUrlP1: string;
+    searchUrlP2: string;
     searchUrl: string;
-    movieQuery: string;
+    movieId: string;
     constructor(private http: Http) {
       this.apiKey = '0af0cd62a4131f05e9e97a450fbee87f';
-      this.movieQuery = 'query=';
-      this.searchUrlp1 = `https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&language=en-US&page=`;
-      this.searchUrlp2 ='&include_adult=false&';
-      this.value = '';
+      this.movieId=' '
+      this.searchUrlP1 = `https://api.themoviedb.org/3/movie/`;     
     };
-
-    public movieSearch(value: string,num : number ): Observable<any>{
-       this.searchUrl =  this.searchUrlp1 + num.toString() +  this.searchUrlp2 ;
-      this.movieQuery = `query=${value}`;
-      return this.http.get(this.searchUrl + this.movieQuery)
+// fetches specific movue using movie_id of api
+    public movieFetch(value: string ): Observable<any>{
+      this.movieId = value;
+      this.searchUrlP2 = `${this.movieId}?api_key=${this.apiKey}&language=en-US` ;
+      this.searchUrl = this.searchUrlP1+this.searchUrlP2;   
+      return this.http.get(this.searchUrl)
         .map(this.extractMovieData);
     }
 

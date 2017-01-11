@@ -5,43 +5,43 @@ import { ActivatedRoute } from '@angular/router';
 //my imports
 import { PageNum } from '../common/page.number.component';
 import {FindReturnedData } from '..//common/models/find.models';
-import { SearchService} from './search.service';
+import { FetchService} from './fetch.movie.service';
 import {  Movie } from './movie.card.component';
 
 @Component({
   selector: 'movieDetail',
   styles: [`
   `],
-  providers: [SearchService, Movie, PageNum,],
-  templateUrl: 'search.html'
+  providers: [FetchService, Movie, PageNum,],
+  templateUrl: 'movie.details.html'
 })
 export class MovieComponent {
   localState: any;
   movies: any;
-  searchData: FindReturnedData;
-  value: string;
-  pagesArray: Array<number>
-  searched: boolean;
-  morePages: boolean;
-  nextPage: boolean;
-  previousPage:boolean;
-  i:number;
+  aquired :boolean;
   constructor(public route: ActivatedRoute,
-    public searchService: SearchService) {
+    public fetchService: FetchService) {
   }
 
   ngOnInit() {
-     this.i=1;
-    this.value = '';
-    this.pagesArray=[1];    
-    this.searched=false;
-    this.morePages=false;
-    this.nextPage=false;
-    this.previousPage=false;
-    
+    this.aquired=false;
+    this.fetchMovie(this.route.snapshot.params['id'] );
     console.log('hello there `movie` component');
      console.log('ID',  this.route.snapshot.params['id']);
+}
+
+
+  public fetchMovie(value: string) {
+    this.fetchService.movieFetch(value )
+  .subscribe( res => this.handleMovieData(res) );
+}
+ public handleMovieData(res: FindReturnedData) {
+      this.movies = res;
+      console.log('this.movies', this.movies);
+      //this ensures we have the data before we ask the html to display it
+      this.aquired=true;
   }
+/*
 //handle the search after users inputs and hits enter
   public onEnter = (value: string, num: number=1) => {
     this.searched = true;
@@ -75,5 +75,5 @@ public CreatePageLinks(total:number,current:number) {
  public searchChange(num: number) { 
     this.onEnter(this.value , num);
  }
-
+*/
 }

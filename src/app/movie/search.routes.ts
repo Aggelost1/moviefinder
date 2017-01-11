@@ -4,7 +4,7 @@ import { MovieComponent } from './movie.component';
 
 
 const routes = [
-    { path: '', component: SearchComponent, pathMatch: 'full' }
+    { path: '', component: SearchComponent, pathMatch: 'full' },
     { path: 'movie/:id', component: MovieComponent }
 ];
 
