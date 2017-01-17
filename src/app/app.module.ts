@@ -21,6 +21,9 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { NoContentComponent } from './no-content';
 import { XLarge } from './home/x-large';
+// my imports
+//import { Movie } from './movie/movie.item.component';
+//import { Poster } from './common/image.or.not.component'
 
 // Application wide providers
 const APP_PROVIDERS = [

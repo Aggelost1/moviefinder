@@ -1,22 +1,22 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {NgIf} from 'angular2/common';
-import { ActivatedRoute } from '@angular/router';
+import { Component }       from '@angular/core';
+import { CommonModule }    from '@angular/common';
+import {NgIf}              from 'angular2/common';
+import { ActivatedRoute }  from '@angular/router';
 //my imports
-import { PageNum } from '../common/page.number.component';
+import { PageNum }         from '../common/page.number.component';
 import {FindReturnedData } from '..//common/models/find.models';
-import { SearchService} from './search.service';
-import {  Movie } from './movie.card.component';
-
+import { SearchService}    from './search.service';
+import {  Movie }          from './movie.item.component';
+import {SearchComponent}   from '../search/search.component';
 @Component({
-  selector: 'search',
+  selector: 'movies',
   styles: [`
   `],
   providers: [SearchService, Movie, PageNum,],
-  templateUrl: 'search.html'
+  templateUrl: 'movies.html'
 })
-export class SearchComponent {
-  localState: any;
+export class MoviesComponent { 
+   localState: any;
   movies: any;
   searchData: FindReturnedData;
   value: string;
@@ -39,7 +39,7 @@ export class SearchComponent {
     this.nextPage=false;
     this.previousPage=false;
     
-    console.log('hello `Search` component');
+    console.log('hello `Movie` component');
   }
 //handle the search after users inputs and hits enter
   public onEnter = (value: string, num: number=1) => {

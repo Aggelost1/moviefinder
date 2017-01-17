@@ -1,3 +1,5 @@
   
-
-        <movieItem *ngIf="aquired" [movie]="this.movies"></movieItem>
+<a  *ngIf="aquired">
+<movieItem [movie]="this.movies"></movieItem>
+<p> {{this.movies.overview}}</p>
+</a>

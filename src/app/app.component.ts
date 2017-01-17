@@ -40,6 +40,12 @@ import { AppState } from './app.service';
           movies
         </a>
       </span>
+      |
+       <span>
+        <a [routerLink]=" ['./search'] ">
+          search
+        </a>
+      </span>
     </nav>
 
     <main>

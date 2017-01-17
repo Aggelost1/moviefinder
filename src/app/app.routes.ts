@@ -8,6 +8,8 @@ export const ROUTES: Routes = [
   { path: '',      component: HomeComponent },
   { path: 'home',  component: HomeComponent },
   { path: 'detail', loadChildren: './+detail/index#DetailModule' },
-  { path: 'movies', loadChildren: './movie/search.module#SearchModule' },
+   { path: 'search', loadChildren: './search/search.module#SearchModule' },
+  { path: 'movies', loadChildren: './movie/movie.module#MovieModule' },
+ 
   { path: '**',    component: NoContentComponent },
 ];

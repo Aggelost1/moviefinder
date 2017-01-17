@@ -4,44 +4,51 @@ import {NgIf} from 'angular2/common';
 import { ActivatedRoute } from '@angular/router';
 //my imports
 import { PageNum } from '../common/page.number.component';
-import {FindReturnedData } from '..//common/models/find.models';
-import { FetchService} from './fetch.movie.service';
-import {  Movie } from './movie.card.component';
+//import {FindReturnedData } from '..//common/models/find.models';
+//import { SearchService} from './search.service';
+//import {  Movie } from '../movie/movie.item.component';
 
 @Component({
-  selector: 'movieDetail',
+  selector: 'search',
   styles: [`
-  `],
-  providers: [FetchService, Movie, PageNum,],
-  templateUrl: 'movie.details.html'
+  `],providers: [PageNum],
+ // providers: [SearchService, Movie, PageNum,],
+  templateUrl: 'search.html'
 })
-export class MovieComponent {
+export class SearchComponent {
+  pagesArray: Array<number>
+  ngOnInit() {
+         console.log('hello `Search` component');
+    this.pagesArray=[1,2,3,4,78];    
+  }
+  /*
   localState: any;
   movies: any;
-  aquired :boolean;
+  searchData: FindReturnedData;
+  value: string;
+  pagesArray: Array<number>
+  searched: boolean;
+  morePages: boolean;
+  nextPage: boolean;
+  previousPage:boolean;
+  i:number;
   constructor(public route: ActivatedRoute,
-    public fetchService: FetchService) {
+    public searchService: SearchService) {
   }
+
+
 
   ngOnInit() {
-    this.aquired=false;
-    this.fetchMovie(this.route.snapshot.params['id'] );
-    console.log('hello there `movie` component');
-     console.log('ID',  this.route.snapshot.params['id']);
-}
-
-
-  public fetchMovie(value: string) {
-    this.fetchService.movieFetch(value )
-  .subscribe( res => this.handleMovieData(res) );
-}
- public handleMovieData(res: FindReturnedData) {
-      this.movies = res;
-      console.log('this.movies', this.movies);
-      //this ensures we have the data before we ask the html to display it
-      this.aquired=true;
+     this.i=1;
+    this.value = '';
+    this.pagesArray=[1];    
+    this.searched=false;
+    this.morePages=false;
+    this.nextPage=false;
+    this.previousPage=false;
+    
+    console.log('hello `Search` component');
   }
-/*
 //handle the search after users inputs and hits enter
   public onEnter = (value: string, num: number=1) => {
     this.searched = true;
