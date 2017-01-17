@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import {FindMovieData, UrlList } from '../common/models/find.models';
-import { Poster } from '../common/image.or.not.component'
+import {FindMovieData, UrlList } from '../models/find.models';
+import { Poster } from '../image.or.not.component'
 
 @Component({
     selector: 'movieItem',

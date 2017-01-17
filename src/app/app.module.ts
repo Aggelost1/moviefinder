@@ -21,6 +21,10 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { NoContentComponent } from './no-content';
 import { XLarge } from './home/x-large';
+// my imports
+import {SharedModule} from './shared/shared.module'
+//import { Movie } from './movie/movie.item.component';
+//import { Poster } from './common/image.or.not.component'
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -50,7 +54,10 @@ type StoreType = {
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    //materila mdule
     MaterialModule.forRoot(),
+    // my modules
+    SharedModule,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
